@@ -3,12 +3,13 @@ import { fetchDashboardFromGas, hasGasConfig } from "@/lib/gas";
 import { mockDashboardData } from "@/lib/mock-documents";
 
 export async function getDashboardState(): Promise<DashboardLoadState> {
-  if (!hasGasConfig()) {
+  if (!(await hasGasConfig())) {
     return {
       data: mockDashboardData,
       gasConfigured: false,
       source: "mock",
-      errorMessage: "ยังไม่ได้ตั้งค่า GAS_WEB_APP_URL บน environment ของ deployment นี้",
+      errorMessage:
+        "ยังไม่ได้ตั้งค่า GAS_WEB_APP_URL และยังไม่ได้บันทึก URL ผ่านหน้าตั้งค่า",
     };
   }
 
