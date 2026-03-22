@@ -8,7 +8,7 @@ import type {
 } from "@/lib/document-types";
 import { createUploadedBy, formatBytes } from "@/lib/document-utils";
 
-const gasWebAppUrl = process.env.GAS_WEB_APP_URL;
+const gasWebAppUrl = process.env.GAS_WEB_APP_URL?.trim();
 export const DASHBOARD_CACHE_TAG = "dashboard-data";
 
 export function hasGasConfig() {
